@@ -66,6 +66,24 @@
             margin: 10px 0;
         }
 
+        .schedule-grid {
+            margin-top: 20px;
+        }
+
+        .schedule-item {
+            background-color: #f8f9fa;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border-left: 4px solid #0066ff;
+        }
+
+        .schedule-item strong {
+            color: #0066ff;
+            display: block;
+            margin-bottom: 5px;
+        }
+
         .energy-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -78,6 +96,7 @@
             padding: 15px;
             border-radius: 5px;
             text-align: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
 
         .energy-card h3 {
@@ -125,14 +144,45 @@
             border-radius: 10px;
             max-width: 500px;
             width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
         }
 
-        .schedule-item {
-            background-color: #f8f9fa;
-            padding: 15px;
-            margin-bottom: 10px;
+        .time-group {
+            margin-bottom: 15px;
+        }
+
+        .time-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .time-group input[type="time"] {
+            padding: 5px;
+            margin-right: 10px;
+        }
+
+        .training-group {
+            margin-bottom: 15px;
+            padding: 10px;
+            background: #f8f9fa;
             border-radius: 5px;
-            border-left: 4px solid #0066ff;
+        }
+
+        .training-group label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .day-schedule {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .day-schedule h3 {
+            margin-top: 0;
+            color: #0066ff;
         }
 
         @media (max-width: 600px) {
@@ -207,7 +257,7 @@
     </div>
 
     <script>
-        // User data with default values
+        // Initialize with default schedule
         let userData = JSON.parse(localStorage.getItem('athletePlanner')) || {
             schedule: {
                 Monday: {
@@ -305,7 +355,7 @@
             }
             
             modal.querySelector('.modal-content').innerHTML = content + `
-                <button onclick="closeCustomize()">Done</button>
+                <button onclick="closeCustomize()" class="customize-btn">Done</button>
             `;
             modal.style.display = 'flex';
         }
@@ -337,9 +387,9 @@
                         <strong>${day}</strong>
                         <div>School: ${schedule.school.start} - ${schedule.school.end}</div>
                         ${schedule.clubTraining.active && (userData.currentView === 'both' || userData.currentView === 'club') ?
-                            `<div>Club Training: ${schedule.clubTraining.start} - ${schedule.clubTraining.end}</div>` : ''}
+                            `<div style="color: #34a853">Club Training: ${schedule.clubTraining.start} - ${schedule.clubTraining.end}</div>` : ''}
                         ${schedule.schoolTraining.active && (userData.currentView === 'both' || userData.currentView === 'school') ?
-                            `<div>School Training: ${schedule.schoolTraining.start} - ${schedule.schoolTraining.end}</div>` : ''}
+                            `<div style="color: #34a853">School Training: ${schedule.schoolTraining.start} - ${schedule.schoolTraining.end}</div>` : ''}
                     </div>
                 `;
             }
@@ -366,15 +416,4 @@
             updateScheduleDisplay();
             document.getElementById('studyEnergy').textContent = userData.energy.study + '/10';
             document.getElementById('sportsEnergy').textContent = userData.energy.sports + '/10';
-            document.getElementById('overallEnergy').textContent = userData.energy.overall + '/10';
-        });
-
-        // Close modal when clicking outside
-        document.querySelector('.modal').addEventListener('click', (e) => {
-            if (e.target.classList.contains('modal')) {
-                closeCustomize();
-            }
-        });
-    </script>
-</body>
-</html>
+            document.getElementById('overallEnergy').textContent =
