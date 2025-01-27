@@ -3,32 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NZ Student Athlete Planner</title>
+    <title>Student Athlete Schedule Planner</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <h1>Student Athlete Schedule Planner</h1>
 
-        <!-- Schedule Selection -->
-        <div class="card">
+        <!-- Schedule Section -->
+        <div class="schedule-section">
             <h2>Training Schedule</h2>
             <div class="setup-notice">
                 First time? Click "Customize Times" to set up your school and training schedule.
             </div>
+            
             <div class="button-group">
                 <button onclick="setSchedule('both')" class="active">Both Teams</button>
                 <button onclick="setSchedule('club')">Club Only</button>
                 <button onclick="setSchedule('school')">School Only</button>
             </div>
-            <button onclick="showCustomizeSchedule()" class="customize-btn">Customize Times ⚙️</button>
+            
+            <button onclick="showCustomizeSchedule()" class="customize-btn">
+                Customize Times ⚙️
+            </button>
+            
             <div id="schedule" class="schedule-grid">
-                <!-- Schedule will be filled by JavaScript -->
+                <!-- Schedule items will be inserted here by JavaScript -->
             </div>
         </div>
 
-        <!-- Energy Tracker -->
-        <div class="card">
+        <!-- Energy Tracker Section -->
+        <div class="energy-section">
             <h2>Energy & Performance Tracker</h2>
             <div class="energy-grid">
                 <div class="energy-card">
@@ -48,7 +53,7 @@
         </div>
 
         <!-- Benefits Section -->
-        <div class="card info-card">
+        <div class="info-card">
             <h2>Benefits of Sports on Academic Performance</h2>
             <ul>
                 <li>Exercise improves memory and concentration during study</li>
