@@ -2,7 +2,7 @@
 let userData = JSON.parse(localStorage.getItem('athletePlanner')) || {
     schedule: {
         school: {
-            startTime: '8:45',
+            startTime: '08:45',
             endTime: '15:15'
         },
         training: {
