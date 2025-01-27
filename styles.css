@@ -1,3 +1,34 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f0f2f5;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+h1 {
+    color: #1a73e8;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+h2 {
+    color: #1a73e8;
+    margin-top: 0;
+}
+
+.card {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
 .setup-notice {
     background-color: #e8f0fe;
     padding: 10px;
@@ -5,6 +36,32 @@
     margin-bottom: 15px;
     font-size: 0.9em;
     color: #1a73e8;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #e8f0fe;
+    color: #1a73e8;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #1a73e8;
+    color: white;
+}
+
+button.active {
+    background-color: #1a73e8;
+    color: white;
 }
 
 .customize-btn {
@@ -24,4 +81,90 @@
     background-color: #1557b0;
 }
 
-/* Add this to your existing styles.css */
+.schedule-grid {
+    display: grid;
+    gap: 10px;
+}
+
+.schedule-item {
+    padding: 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+}
+
+.energy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.energy-card {
+    padding: 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.log-button {
+    width: 100%;
+    padding: 12px;
+    background-color: #1a73e8;
+    color: white;
+}
+
+.info-card {
+    background-color: #e8f0fe;
+}
+
+.info-card ul {
+    padding-left: 20px;
+    line-height: 1.6;
+}
+
+/* Modal Styles */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 500px;
+    width: 90%;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+@media (max-width: 600px) {
+    .energy-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .button-group {
+        flex-direction: column;
+    }
+}
