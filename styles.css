@@ -20,6 +20,16 @@ h1, h2 {
     margin-bottom: 20px;
 }
 
+/* Setup Notice */
+.setup-notice {
+    background-color: #e8f0fe;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    color: #1a73e8;
+    font-size: 0.9em;
+}
+
 /* Button Styles */
 .button-group {
     display: flex;
@@ -56,6 +66,10 @@ h1, h2 {
     font-size: 14px;
 }
 
+.customize-btn:hover {
+    background-color: #1557b0;
+}
+
 /* Schedule Styles */
 .schedule-grid {
     margin-top: 20px;
@@ -75,7 +89,7 @@ h1, h2 {
     color: #1a73e8;
 }
 
-.training {
+.schedule-item .training {
     color: #34a853;
     margin-top: 5px;
 }
@@ -111,6 +125,10 @@ h1, h2 {
     margin-top: 10px;
 }
 
+.log-button:hover {
+    background-color: #1557b0;
+}
+
 /* Benefits Section */
 .info-card {
     background-color: #e8f0fe;
@@ -128,11 +146,100 @@ h1, h2 {
     margin-bottom: 8px;
 }
 
-/* Setup Notice */
-.setup-notice {
-    background-color: #e8f0fe;
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 15px;
+/* Modal Styles */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 500px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.modal h3 {
+    margin-top: 0;
     color: #1a73e8;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.modal-buttons button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.modal-buttons button:first-child {
+    background-color: #1a73e8;
+    color: white;
+}
+
+.modal-buttons button:first-child:hover {
+    background-color: #1557b0;
+}
+
+.modal-buttons button:last-child {
+    background-color: #e0e0e0;
+    color: #333;
+}
+
+.modal-buttons button:last-child:hover {
+    background-color: #c0c0c0;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .energy-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .button-group {
+        flex-direction: column;
+    }
+    
+    .modal-content {
+        width: 95%;
+        margin: 10px;
+    }
 }
