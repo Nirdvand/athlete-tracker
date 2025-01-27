@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Athlete Planner</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Student Athlete Success Tracker</h1>
+
+        <!-- Schedule Selection -->
+        <div class="card">
+            <h2>Training Schedule</h2>
+            <div class="button-group">
+                <button onclick="setSchedule('both')" class="active">Both Teams</button>
+                <button onclick="setSchedule('club')">Club Only</button>
+                <button onclick="setSchedule('school')">School Only</button>
+            </div>
+            <div id="schedule" class="schedule-grid">
+                <!-- Schedule will be filled by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Grades Tracker -->
+        <div class="card">
+            <h2>Academic Performance</h2>
+            <div class="grades-grid">
+                <div class="grade-card">
+                    <h3>Math</h3>
+                    <p>Current Grade: <span id="mathGrade">B+</span></p>
+                    <button onclick="addGrade('math')">Add Grade</button>
+                </div>
+                <div class="grade-card">
+                    <h3>English</h3>
+                    <p>Current Grade: <span id="englishGrade">A-</span></p>
+                    <button onclick="addGrade('english')">Add Grade</button>
+                </div>
+                <div class="grade-card">
+                    <h3>Science</h3>
+                    <p>Current Grade: <span id="scienceGrade">B</span></p>
+                    <button onclick="addGrade('science')">Add Grade</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Energy Tracker -->
+        <div class="card">
+            <h2>Energy & Performance</h2>
+            <div class="energy-grid">
+                <div class="energy-card">
+                    <h3>Study Focus</h3>
+                    <p>Today's Level: <span id="studyEnergy">8/10</span></p>
+                </div>
+                <div class="energy-card">
+                    <h3>Sports Performance</h3>
+                    <p>Today's Level: <span id="sportsEnergy">9/10</span></p>
+                </div>
+                <div class="energy-card">
+                    <h3>Overall Energy</h3>
+                    <p>Today's Level: <span id="overallEnergy">8/10</span></p>
+                </div>
+            </div>
+            <button onclick="logEnergy()" class="log-button">Log Today's Energy</button>
+        </div>
+
+        <!-- Benefits Section -->
+        <div class="card info-card">
+            <h2>Benefits of Sports on Academic Performance</h2>
+            <ul>
+                <li>Exercise improves memory and concentration</li>
+                <li>Team sports develop time management skills</li>
+                <li>Physical activity reduces stress and improves mental health</li>
+                <li>Athletes often perform better academically due to structured schedules</li>
+            </ul>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
