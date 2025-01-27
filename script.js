@@ -38,10 +38,11 @@ function setSchedule(type) {
     event.target.classList.add('active');
 }
 
-// Add customization modal
+// Show customize schedule modal
 function showCustomizeSchedule() {
     const modal = document.createElement('div');
     modal.className = 'modal';
+    
     modal.innerHTML = `
         <div class="modal-content">
             <h3>Customize Your Schedule</h3>
@@ -61,13 +62,38 @@ function showCustomizeSchedule() {
                 <label>School Team Training Time:</label>
                 <input type="time" id="schoolTeamTime" value="${userData.schedule.training.schoolTeamTimes.split('-')[0]}">
             </div>
-            <button onclick="saveCustomSchedule()">Save Changes</button>
-            <button onclick="closeModal()">Cancel</button>
+            <div class="modal-buttons">
+                <button onclick="saveCustomSchedule()">Save Changes</button>
+                <button onclick="closeModal()">Cancel</button>
+            </div>
         </div>
     `;
+
+    // Remove any existing modal
+    const existingModal = document.querySelector('.modal');
+    if (existingModal) {
+        existingModal.remove();
+    }
+
     document.body.appendChild(modal);
+
+    // Close modal when clicking outside
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            closeModal();
+        }
+    });
 }
 
+// Close modal function
+function closeModal() {
+    const modal = document.querySelector('.modal');
+    if (modal) {
+        modal.remove();
+    }
+}
+
+// Save schedule changes
 function saveCustomSchedule() {
     const schoolStart = document.getElementById('schoolStart').value;
     const schoolEnd = document.getElementById('schoolEnd').value;
@@ -84,6 +110,7 @@ function saveCustomSchedule() {
     closeModal();
 }
 
+// Helper function to add hours to time
 function addHours(time, hours) {
     const [h, m] = time.split(':');
     const date = new Date();
@@ -93,10 +120,7 @@ function addHours(time, hours) {
     return `${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}`;
 }
 
-function closeModal() {
-    document.querySelector('.modal').remove();
-}
-
+// Update schedule display
 function updateScheduleDisplay() {
     const scheduleDiv = document.getElementById('schedule');
     const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
@@ -114,7 +138,7 @@ function updateScheduleDisplay() {
                 <strong>${day}</strong>
                 <div>School: ${userData.schedule.school.startTime} - ${userData.schedule.school.endTime}</div>
                 ${showTraining ? `
-                    <div style="color: green">
+                    <div class="training">
                         Training: ${hasClubTraining ? userData.schedule.training.clubTimes : userData.schedule.training.schoolTeamTimes}
                     </div>
                 ` : ''}
